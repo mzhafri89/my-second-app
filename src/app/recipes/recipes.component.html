@@ -1,10 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-md-5">
-      <app-recipe-list></app-recipe-list>
+      <app-recipe-list (selectedRecipeInfo)="rspInfo = $event"></app-recipe-list>
     </div>
     <div class="col-md-7">
-      <app-recipe-details></app-recipe-details>
+      <app-recipe-details *ngIf="rspInfo; else noRecipeInfo" [recipe]="rspInfo"></app-recipe-details>
+      <ng-template #noRecipeInfo>
+        No Recipe Selected
+      </ng-template>
     </div>
   </div>
 </div>
